@@ -47,8 +47,8 @@ WHERE LOWER(email) = LOWER('email@here.com');
 
 This is the **Teams Coach4U** standalone app — a GitHub Pages static site for managing team members, seats, roles, and GWC (Gets it, Wants it, Has the Capacity) alignment.
 
-- **Repo:** `cathcoach4u/-coach4Uapp-businesscoach4u`
-- **Live site:** `https://cathcoach4u.github.io/-coach4Uapp-businesscoach4u/`
+- **Repo:** `cathcoach4u/coach4Uapp-teamcoach4U`
+- **Live site:** `https://cathcoach4u.github.io/coach4Uapp-teamcoach4U/`
 - **Supabase project:** `eekefsuaefgpqmjdyniy.supabase.co` (shared Coach4U project)
 - No AI coach or edge functions in this app
 - File structure: `index.html`, `login.html`, `forgot-password.html`, `reset-password.html`, `js/auth.js`, `js/supabase.js`

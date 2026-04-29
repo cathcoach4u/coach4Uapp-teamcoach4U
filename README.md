@@ -2,4 +2,4 @@
 
 Team management app — seats, roles, and GWC alignment.
 
-Live: https://cathcoach4u.github.io/-coach4Uapp-businesscoach4u/
+Live: https://cathcoach4u.github.io/coach4Uapp-teamcoach4U/
