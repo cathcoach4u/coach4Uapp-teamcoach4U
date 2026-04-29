@@ -4,18 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Teams Coach4U</title>
-  <link rel="stylesheet" href="https://cathcoach4u.github.io/coach4u-shared/css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --color-navy: #1B3664;
+      --color-blue: #5684C4;
+      --color-body: #2D2D2D;
+      --color-border: #DDDDDD;
+      --font-heading: 'Inter', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-body); color: var(--color-body); }
+    a { color: var(--color-blue); }
+    .site-header { background: var(--color-navy); padding: 0 24px; height: 56px; display: flex; align-items: center; }
+    .header-inner { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
+    .main-content { padding: 40px 24px; max-width: 960px; margin: 0 auto; }
+    .btn { display: inline-block; padding: 8px 18px; border-radius: 6px; font-size: 14px; font-family: var(--font-heading); font-weight: 700; cursor: pointer; border: 1px solid transparent; text-align: center; text-decoration: none; }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
     .placeholder-hero { text-align: center; padding: 80px 24px; }
-    .placeholder-hero h1 { font-size: 32px; font-weight: 800; color: #003366; margin-bottom: 12px; }
-    .placeholder-hero p { font-size: 16px; color: #6C757D; max-width: 480px; margin: 0 auto; line-height: 1.6; }
+    .placeholder-hero h1 { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--color-navy); margin-bottom: 12px; }
+    .placeholder-hero p { font-size: 16px; color: var(--color-body); max-width: 480px; margin: 0 auto; line-height: 1.6; }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="header-inner" style="flex-direction:row;justify-content:space-between;align-items:center">
-      <span style="font-size:20px;font-weight:800;color:#fff">Teams Coach4U</span>
-      <button id="sign-out-btn" class="btn btn-ghost" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3)">Sign Out</button>
+    <div class="header-inner">
+      <span style="font-size:20px;font-weight:700;font-family:var(--font-heading);color:#fff">Teams Coach4U</span>
+      <button id="sign-out-btn" class="btn btn-ghost sign-out-btn">Sign Out</button>
     </div>
   </header>
 

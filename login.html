@@ -4,14 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign In — Teams Coach4U</title>
-  <link rel="stylesheet" href="https://cathcoach4u.github.io/coach4u-shared/css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet" />
   <style>
-    body { background: #003366; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    :root {
+      --color-navy: #1B3664;
+      --color-blue: #5684C4;
+      --color-body: #2D2D2D;
+      --color-border: #DDDDDD;
+      --font-heading: 'Inter', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--color-navy); display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: var(--font-body); color: var(--color-body); }
+    a { color: var(--color-blue); }
     .login-card { background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); padding: 40px 36px; width: 100%; max-width: 380px; }
     .login-logo { text-align: center; margin-bottom: 28px; }
-    .login-logo h1 { font-size: 22px; font-weight: 800; color: #003366; }
-    .login-logo p { font-size: 14px; color: #6C757D; margin-top: 4px; }
-    .alert-error { background: #f8d7da; color: #721c24; border-radius: 6px; padding: 10px 14px; font-size: 14px; margin-bottom: 14px; display: none; }
+    .login-logo h1 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--color-navy); margin: 0 0 4px; }
+    .login-logo p { font-size: 14px; color: var(--color-body); margin: 0; }
+    .form-group { display: flex; flex-direction: column; margin-bottom: 14px; }
+    label { font-size: 13px; font-weight: 700; font-family: var(--font-heading); color: var(--color-body); margin-bottom: 6px; }
+    .field-input { border: 1px solid var(--color-border); border-radius: 6px; padding: 10px 12px; font-size: 14px; font-family: var(--font-body); color: var(--color-body); width: 100%; outline: none; }
+    .field-input:focus { border-color: var(--color-blue); box-shadow: 0 0 0 3px rgba(86,132,196,0.15); }
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-family: var(--font-heading); font-weight: 700; cursor: pointer; border: 1px solid transparent; text-align: center; text-decoration: none; }
+    .btn-primary { background: var(--color-navy); color: #fff; border-color: var(--color-navy); }
+    .btn-primary:hover { background: var(--color-blue); border-color: var(--color-blue); }
+    .alert { border-radius: 6px; padding: 10px 14px; font-size: 14px; margin-bottom: 14px; display: none; }
+    .alert-error { background: #f8d7da; color: #721c24; }
+    .alert-success { background: #d4edda; color: #155724; }
   </style>
 </head>
 <body>
@@ -20,7 +42,7 @@
       <h1>Teams Coach4U</h1>
       <p>Sign in to your account</p>
     </div>
-    <form id="login-form">
+    <form id="signInForm">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" class="field-input" required autocomplete="username" />
@@ -29,8 +51,8 @@
         <label for="password">Password</label>
         <input type="password" id="password" class="field-input" required autocomplete="current-password" />
       </div>
-      <div id="error-msg" class="alert-error"></div>
-      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px">Sign In</button>
+      <div id="message" class="alert-error"></div>
+      <button type="submit" id="login-btn" class="btn btn-primary" style="width:100%;margin-top:20px">Sign In</button>
       <p style="text-align:center;margin-top:14px;font-size:0.875rem">
         <a href="forgot-password.html">Forgot password?</a>
       </p>
@@ -44,11 +66,11 @@
       'sb_publishable_pcXHwQVMpvEojb4K3afEMw_RMvgZM-Y'
     );
 
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
+    document.getElementById('signInForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email    = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
-      const errEl    = document.getElementById('error-msg');
+      const errEl    = document.getElementById('message');
 
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {

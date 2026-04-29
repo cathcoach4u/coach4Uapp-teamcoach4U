@@ -1,16 +1,30 @@
 # Teams Coach4U — Claude Code Guide
 
+> Design system version: **v1.3**
 > Template: https://github.com/cathcoach4u/coach4u-shared/blob/main/templates/CLAUDE.md
 > Shared design system: https://github.com/cathcoach4u/coach4u-shared
 > Full setup guide: https://github.com/cathcoach4u/coach4u-shared/blob/main/SETUP.md
 
-## Shared Stylesheet
+## Styles
 
-Add to every HTML page `<head>`:
+All styles are inline in each HTML page. There is no external stylesheet link.
+
+Add Google Fonts to every HTML page `<head>`:
 
 ```html
-<link rel="stylesheet" href="https://cathcoach4u.github.io/coach4u-shared/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet" />
 ```
+
+Brand colours (define as CSS custom properties on `:root`):
+
+| Variable | Value |
+|---|---|
+| `--color-navy` | `#1B3664` |
+| `--color-blue` | `#5684C4` |
+| `--color-body` | `#2D2D2D` |
+| `--color-border` | `#DDDDDD` |
 
 ## Supabase Project
 

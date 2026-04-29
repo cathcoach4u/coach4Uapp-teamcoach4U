@@ -1,0 +1,9 @@
+{
+  "name": "Teams Coach4U",
+  "short_name": "Teams",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1B3664",
+  "theme_color": "#1B3664",
+  "icons": []
+}
