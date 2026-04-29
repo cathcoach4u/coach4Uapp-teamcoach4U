@@ -30,7 +30,7 @@
       <h1>Teams Coach4U</h1>
       <p>Sign in to your account</p>
     </div>
-    <form id="login-form">
+    <form id="signInForm">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" class="field-input" required autocomplete="username" />
@@ -39,8 +39,8 @@
         <label for="password">Password</label>
         <input type="password" id="password" class="field-input" required autocomplete="current-password" />
       </div>
-      <div id="error-msg" class="alert-error"></div>
-      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px">Sign In</button>
+      <div id="message" class="alert-error"></div>
+      <button type="submit" id="login-btn" class="btn btn-primary" style="width:100%;margin-top:20px">Sign In</button>
       <p style="text-align:center;margin-top:14px;font-size:0.875rem">
         <a href="forgot-password.html">Forgot password?</a>
       </p>
@@ -54,11 +54,11 @@
       'sb_publishable_pcXHwQVMpvEojb4K3afEMw_RMvgZM-Y'
     );
 
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
+    document.getElementById('signInForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email    = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
-      const errEl    = document.getElementById('error-msg');
+      const errEl    = document.getElementById('message');
 
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
