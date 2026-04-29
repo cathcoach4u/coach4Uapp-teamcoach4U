@@ -30,13 +30,14 @@
     .placeholder-hero { text-align: center; padding: 80px 24px; }
     .placeholder-hero h1 { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--color-navy); margin-bottom: 12px; }
     .placeholder-hero p { font-size: 16px; color: var(--color-body); max-width: 480px; margin: 0 auto; line-height: 1.6; }
-    .site-footer { text-align: center; padding: 24px; font-size: 12px; color: var(--color-border); }
+    .header-meta { font-size: 12px; color: rgba(255,255,255,0.5); margin-right: 16px; }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <span style="font-size:20px;font-weight:700;font-family:var(--font-heading);color:#fff">Teams Coach4U</span>
+      <span id="header-meta" class="header-meta"></span>
       <button id="sign-out-btn" class="btn btn-ghost sign-out-btn">Sign Out</button>
     </div>
   </header>
@@ -47,8 +48,6 @@
       <p>Team management — seats, roles, and GWC alignment. Coming soon.</p>
     </div>
   </main>
-
-  <footer class="site-footer">Teams Coach4U — design system v1.3</footer>
 
   <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
@@ -69,6 +68,9 @@
       if (profile?.membership_status !== 'active') {
         window.location.href = 'inactive.html';
       }
+
+      const today = new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+      document.getElementById('header-meta').textContent = `v1.3 — ${today}`;
 
       document.getElementById('sign-out-btn').addEventListener('click', async () => {
         await supabase.auth.signOut();
